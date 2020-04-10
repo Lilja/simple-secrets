@@ -35,8 +35,6 @@ def parse_secret_value(trimmed_line):
     return trimmed_value
 
 
-
-
 def parse_secret_key(trimmed_line):
     return trimmed_line.split("=")[0].strip().split('.')
 
@@ -197,4 +195,4 @@ if __name__ == '__main__':
     elif args['configure']:
         truncate_and_populate()
     else:
-        raise NotImplemented
+        parser.print_help()

@@ -167,19 +167,19 @@ def truncate_and_populate():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Secrets hidden from source control')
     parser.add_argument(
-        '--get', type=str, help='an integer for the accumulator', action='store'
+        '--get', type=str, help='Get secret by key', action='store'
     )
     parser.add_argument(
-        '--configure', help='an integer for the accumulator', action='store_true'
+        '--configure', help='Add secrets from scratch', action='store_true'
     )
     parser.add_argument(
         '--set', type=str,
-        help='an integer for the accumulator', action='store',
+        help='Set secret value by a key', action='store',
         nargs=2
     )
     parser.add_argument(
         '--sync',
-        help='an integer for the accumulator', action='store_true',
+        help='Add missing secrets from template', action='store_true',
     )
     args = vars(parser.parse_args())
 

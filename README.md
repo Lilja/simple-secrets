@@ -9,6 +9,8 @@ $ ./simple_secret.py --get http.port
 
 Why use this and not an established tool like [vault](https://www.vaultproject.io/)? My usecase can't be bothered to install a vault instance and maintain it. Simplicity is key.
 
+Why not use env variables? Depends on which tool you use, but for `docker-compose` you have to remember some boilerplate in order to use variables exits the application if not set. I'd prefer to let another tool require my dependencies.
+
 
 ## Configure
 

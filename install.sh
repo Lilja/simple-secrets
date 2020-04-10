@@ -1,5 +1,9 @@
 #!/bin/sh
 
-curl https://raw.githubusercontent.com/Lilja/simple-secrets/master/simple_secret.py >> simple_secret.py
+filename="simple_secret.py"
 
-chmod +x simple_secret.py
+if [ ! -f "$filename" ]; then
+    curl https://raw.githubusercontent.com/Lilja/simple-secrets/master/simple_secret.py > $filename
+
+    chmod +x $filename
+fi

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import sys
+import os
 import functools
 
 template_file = "Secretsfile"
@@ -100,9 +101,9 @@ def write_secrets_file(obj, secrets_file_fo):
                 for x in json_to_txt(context + [key], value):
                     yield x
             else:
-                key = ((".".join(context)) + '.' + key)
+                if context:
+                    key = ((".".join(context)) + '.' + key)
                 yield (key + " = " + value)
-
 
     for x in [
         "# Internal file for simple_secret. Please use the CLI to change these values.",
@@ -132,6 +133,9 @@ def sync():
     secrets = {}
     with open(template_file, 'r') as temp_file:
         templates = understand_template_file(temp_file.read())
+
+        if not os.path.exists(secrets_file):
+            with open(secrets_file, 'w+'): pass
 
         with open(secrets_file, 'r') as o:
             secrets = understand_secrets_file(o.read())
